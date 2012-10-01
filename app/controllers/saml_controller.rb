@@ -11,6 +11,8 @@ class SamlController < ApplicationController
 		encoded_saml = params[:SAMLRequest]
     decoded_saml = inflate(Base64.decode64(encoded_saml))
 
+    puts "decoded_saml #{decoded_saml}"
+
     redirect_url = Nokogiri.XML(decoded_saml).at_xpath('//samlp:AuthnRequest').attribute('AssertionConsumerServiceURL').value
     redirect_url << "?SAMLResponse=#{CGI.escape(Base64.encode64(saml_xml))}"
     redirect_to redirect_url
