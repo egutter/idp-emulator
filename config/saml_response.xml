@@ -97,6 +97,15 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
 			<saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="subGroup">
 				<saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9</saml:AttributeValue>
 			</saml:Attribute>
+            <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="KeepAliveURL">
+              <saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">http://keep-alive-url</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="FinishURL">
+              <saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">http://finish-url</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="LogoutURL">
+              <saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">http://logout-url</saml:AttributeValue>
+            </saml:Attribute>
 		</saml:AttributeStatement>
 	</saml:Assertion>
 </samlp:Response>
