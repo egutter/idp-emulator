@@ -25,7 +25,22 @@ class SamlController < ApplicationController
 		render :text => saml_xml.html_safe
 	end
 
-	private
+  def keep_alive
+    Rails.logger.info "Keep alive hit - #{Time.now.strftime Time::DATE_FORMATS[:db]}"
+    render :text => open(keep_alive_image_path, 'rb').read
+  end
+
+  def logout
+    Rails.logger.info "Logged out at #{Time.now.strftime Time::DATE_FORMATS[:db]}"
+    render :text => 'Logged out!'
+  end
+
+  def finish
+    Rails.logger.info "Finished at #{Time.now.strftime Time::DATE_FORMATS[:db]}"
+    render :text => 'Finish'
+  end
+
+  private
 
   def inflate(string)
     zstream = Zlib::Inflate.new(-Zlib::MAX_WBITS)
@@ -34,9 +49,19 @@ class SamlController < ApplicationController
     zstream.close
     buf
   end
+
 	def saml_xml
     account_credential = AccountCredential.instance
-		File.read("#{Rails.root}/config/saml_response.xml").gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id)
+		File.read("#{Rails.root}/config/saml_response.xml").
+        gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
+        gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
+        gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).
+        gsub('REPLACE_FINISH_URL', saml_finish_url).
+        gsub('REPLACE_LOGOUT_URL', saml_logout_url)
 	end
+
+  def keep_alive_image_path
+    'public/images/keep-alive.png'
+  end
 
 end
