@@ -52,7 +52,7 @@ class SamlController < ApplicationController
 
 	def saml_xml
     account_credential = AccountCredential.instance
-		File.read("#{Rails.root}/config/saml_response.xml").
+		File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
         gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
         gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
         gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).

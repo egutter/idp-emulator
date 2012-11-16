@@ -1,0 +1,102 @@
+
+<?xml version="1.0"?>
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" Destination="http://cbc.merge.connectedhealth.com/authentication/saml_authentication/idp_response" IssueInstant="2012-09-14T18:43:38.163Z" ID="nzApocekeaRtDLCr3IRW7iDY_Df" Version="2.0">
+	<saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">capbluecross.com</saml:Issuer>
+	<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+		<ds:SignedInfo>
+			<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+			<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<ds:Reference URI="#nzApocekeaRtDLCr3IRW7iDY_Df">
+				<ds:Transforms>
+					<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+				</ds:Transforms>
+				<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<ds:DigestValue>PH3DiTYD6qqFlqvvycZ52l3sqjo=</ds:DigestValue>
+			</ds:Reference>
+		</ds:SignedInfo>
+		<ds:SignatureValue>
+H60Ze5S+TxNccEIVC841OqupU3eGO1s/0kCoeRaJMwIWmzBhbHsfRhIogN3ej8YkY0XiMBy8HTRl
+ODR9Kx31Ks0hlV94ZtfKS3z4eY6iNPhdtG2CA807SBpZbXZbl7E/Kns7f9KFEH3gmkHKh/nFPVmF
+JASEXp3WgFej9ApHzOienbQSnw8+F/qsb+fxZ5Vfhf6lQAFWmecs0+QYa+7MsOrO0jgAmdPmoak8
+2IX5GO9hU29CIpDszUtZOgqW2y8qPajvu5KaNqHrvfg10k8cdGGqezIMVkMqdpbTAs6a5c2xRUBb
+9n62heoaQBgK//kfb0BRpD94qC5IJcnZlj9gkQ==
+</ds:SignatureValue>
+		<ds:KeyInfo>
+			<ds:X509Data>
+				<ds:X509Certificate>
+MIIFXDCCBESgAwIBAgIETBzmBTANBgkqhkiG9w0BAQUFADCBsTELMAkGA1UEBhMCVVMxFjAUBgNV
+BAoTDUVudHJ1c3QsIEluYy4xOTA3BgNVBAsTMHd3dy5lbnRydXN0Lm5ldC9ycGEgaXMgaW5jb3Jw
+b3JhdGVkIGJ5IHJlZmVyZW5jZTEfMB0GA1UECxMWKGMpIDIwMDkgRW50cnVzdCwgSW5jLjEuMCwG
+A1UEAxMlRW50cnVzdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSAtIEwxQzAeFw0xMjA1MTQxOTIw
+MzhaFw0xNTA1MTYxMzQ0MTVaMIGYMQswCQYDVQQGEwJVUzEVMBMGA1UECBMMUGVubnN5bHZhbmlh
+MRMwEQYDVQQHEwpIYXJyaXNidXJnMRowGAYDVQQKExFDYXBpdGFsIEJsdWVDcm9zczELMAkGA1UE
+CxMCSVQxNDAyBgNVBAMTK0NCQ0ZJTUNBU2lnbmluZ0NlcnQzLmJjbmV0LmNhcGJsdWVjcm9zcy5j
+b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCuv/7A09TzbET7RULoi1Z27fwOnx3p
+el/WwHPZ/MOcamksLU05I974G+FdkLyYQ2TJ5rGUeQpCz0XZBZT4vo/XpghgCIPfpVPNjPJyxL4v
+e2L0Paf0qhrnbbDfMewxNbojcKMWriSFVGmfuE/hO+HBUl+gUbXPtU0bKZmHBF7Pq2qkNPR9jYiq
+sX2r4mDqy84d/EiSZboVWqBjUpOaILeRBWa2ix05s/SwYmiNEHMfR+ox4St7J3Rfqp3nyl+vyb6C
+s/rnttUsL+oN5dkokJCKKSPhhFxCaBsAsivuoKYf132MGnXB/432dVNS2v/2CZBc82OUV1RqSj7I
+CsdQDOBpAgMBAAGjggGRMIIBjTALBgNVHQ8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsG
+AQUFBwMCMDMGA1UdHwQsMCowKKAmoCSGImh0dHA6Ly9jcmwuZW50cnVzdC5uZXQvbGV2ZWwxYy5j
+cmwwZQYIKwYBBQUHAQEEWTBXMCMGCCsGAQUFBzABhhdodHRwOi8vb2NzcC5lbnRydXN0Lm5ldDAw
+BggrBgEFBQcwAoYkaHR0cDovL2FpYS5lbnRydXN0Lm5ldC9sMWMtY2hhaW4uY2VyMEAGA1UdIAQ5
+MDcwNQYJKoZIhvZ9B0sCMCgwJgYIKwYBBQUHAgEWGmh0dHA6Ly93d3cuZW50cnVzdC5uZXQvcnBh
+MDYGA1UdEQQvMC2CK0NCQ0ZJTUNBU2lnbmluZ0NlcnQzLmJjbmV0LmNhcGJsdWVjcm9zcy5jb20w
+HwYDVR0jBBgwFoAUHvGriQb4SQ8BM3fuFHruGXyTKE0wHQYDVR0OBBYEFP5gMvR6SU+IWbY1ul/v
+0xABeb0qMAkGA1UdEwQCMAAwDQYJKoZIhvcNAQEFBQADggEBAIjjVF4l2YgeCe/mDWTqwwIK/gif
+KFH4lwHuR/N0PZ2C3tgehKuwFzxAr115iyoKdEku3/g8POb7GVU1dSl7q5bAK4CvDj0nYUL9qJ98
+QEMr3VBK68zT4AQMp3U187uSNYTWYa7/+ICKb2vv3QPPVHFDda5WxR5WB8ag1BY2tljs46rslsjd
+IFpynCcygQtNI2tn5dkxjez1JReWtk1lUTQR3qOSl5/F++dFJhJMJAKYKlWvbGppnSxysLxH1X97
+UYoOvgtMQpLe8RXhMdvrw1bTCEx/1q0MihGwStLZ172oMIwNOQNO+8iBewvcvfF68nb6HudU4Xiv
+d/FY/wZfuPo=
+</ds:X509Certificate>
+			</ds:X509Data>
+			<ds:KeyValue>
+				<ds:RSAKeyValue>
+					<ds:Modulus>
+rr/+wNPU82xE+0VC6ItWdu38Dp8d6Xpf1sBz2fzDnGppLC1NOSPe+BvhXZC8mENkyeaxlHkKQs9F
+2QWU+L6P16YIYAiD36VTzYzycsS+L3ti9D2n9Koa522w3zHsMTW6I3CjFq4khVRpn7hP4TvhwVJf
+oFG1z7VNGymZhwRez6tqpDT0fY2IqrF9q+Jg6svOHfxIkmW6FVqgY1KTmiC3kQVmtosdObP0sGJo
+jRBzH0fqMeEreyd0X6qd58pfr8m+grP657bVLC/qDeXZKJCQiikj4YRcQmgbALIr7qCmH9d9jBp1
+wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
+</ds:Modulus>
+					<ds:Exponent>AQAB</ds:Exponent>
+				</ds:RSAKeyValue>
+			</ds:KeyValue>
+		</ds:KeyInfo>
+	</ds:Signature>
+	<samlp:Status>
+		<samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+	</samlp:Status>
+	<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Version="2.0" IssueInstant="2012-09-14T18:43:38.195Z" ID="qB2z2h5RANyUaCH8euMjYrO79JZ">
+		<saml:Issuer>capbluecross.com</saml:Issuer>
+		<saml:Subject>
+			<saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">RF01-2</saml:NameID>
+			<saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+				<saml:SubjectConfirmationData NotOnOrAfter="2012-09-14T18:48:38.195Z" Recipient="http://cbc.merge.connectedhealth.com/authentication/saml_authentication/idp_response"/>
+			</saml:SubjectConfirmation>
+		</saml:Subject>
+		<saml:Conditions NotOnOrAfter="2012-09-14T18:48:38.195Z" NotBefore="2012-09-14T18:38:38.195Z">
+			<saml:AudienceRestriction>
+				<saml:Audience>8thLight</saml:Audience>
+			</saml:AudienceRestriction>
+		</saml:Conditions>
+		<saml:AuthnStatement AuthnInstant="2012-09-14T18:43:38.195Z" SessionIndex="qB2z2h5RANyUaCH8euMjYrO79JZ">
+			<saml:AuthnContext>
+				<saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml:AuthnContextClassRef>
+			</saml:AuthnContext>
+		</saml:AuthnStatement>
+		<saml:AttributeStatement xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="groupID">
+				<saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">REPLACE_EMPLOYER_ID</saml:AttributeValue>
+			</saml:Attribute>
+			<saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="empID">
+				<saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">REPLACE_EMPLOYEE_ID</saml:AttributeValue>
+			</saml:Attribute>
+			<saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="subGroup">
+				<saml:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">9</saml:AttributeValue>
+			</saml:Attribute>
+		</saml:AttributeStatement>
+	</saml:Assertion>
+</samlp:Response>
