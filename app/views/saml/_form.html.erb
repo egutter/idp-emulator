@@ -1,0 +1,37 @@
+<%= form_for(@account_credential, :url => saml_login_path ) do |f| %>
+  <% if @account_credential.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account_credential.errors.count, "error") %> prohibited this account_credential from being saved:</h2>
+
+      <ul>
+      <% @account_credential.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :employer_id %><br />
+    <%= f.text_field :employer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br />
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= label_tag :client %><br />
+    <%= select_tag :client, options_for_select({ "CBC" => "cbc", "AIC" => "aic", "Avera" => "avera" }, "cbc") %>
+  </div>
+  <div class="field">
+    <%= label_tag :environment %><br />
+    <%= select_tag :environment, options_for_select({ "Staging" => "stg", "Merge" => "merge" }, "merge") %>
+  </div>
+  <div class="field">
+    <%= label_tag :protocol %><br />
+    <%= select_tag :protocol, options_for_select({ "http" => "http", "https" => "https" }, "http") %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Login" %>
+  </div>
+<% end %>

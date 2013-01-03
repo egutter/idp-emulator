@@ -5,6 +5,8 @@ IdpEmulator::Application.routes.draw do
   # first created -> highest priority.
 
   match '/saml/signon' => 'saml#signon', :via => :get
+  match '/saml/new' => 'saml#new', :via => :get
+  match '/saml/login' => 'saml#login', :via => :post
   match '/saml/show' => 'saml#show', :via => :get
   match '/saml/keep_alive' => 'saml#keep_alive', :via => :get
   match '/saml/logout' => 'saml#logout', :via => :get

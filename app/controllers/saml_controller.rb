@@ -7,6 +7,23 @@ class SamlController < ApplicationController
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
   PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
 
+  def new
+    @account_credential = AccountCredential.new
+  end
+
+  def login
+    @account_credential = AccountCredential.new(params[:account_credential])
+    if @account_credential.valid?
+      redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
+      cgi_escaped_saml = CGI.escape(Base64.encode64(saml_xml(@account_credential)))
+      redirect_url << "?SAMLResponse=#{cgi_escaped_saml}"
+      #render :text => redirect_url
+      redirect_to redirect_url
+    else
+      render :action => "new"
+    end
+  end
+
 	def signon
 		encoded_saml = params[:SAMLRequest]
     decoded_saml = inflate(Base64.decode64(encoded_saml))
@@ -14,7 +31,7 @@ class SamlController < ApplicationController
     puts "decoded_saml #{decoded_saml}"
 
     redirect_url = Nokogiri.XML(decoded_saml).at_xpath('//samlp:AuthnRequest').attribute('AssertionConsumerServiceURL').value
-    redirect_url << "?SAMLResponse=#{CGI.escape(Base64.encode64(saml_xml))}"
+    redirect_url << "?SAMLResponse=#{CGI.escape(Base64.encode64(saml_xml(AccountCredential.instance)))}"
     redirect_to redirect_url
 
     #raise "#{decoded_saml}"
@@ -22,7 +39,7 @@ class SamlController < ApplicationController
 	end
 
 	def show
-		render :text => saml_xml.html_safe
+		render :text => saml_xml(AccountCredential.instance).html_safe
 	end
 
   def keep_alive
@@ -50,8 +67,7 @@ class SamlController < ApplicationController
     buf
   end
 
-	def saml_xml
-    account_credential = AccountCredential.instance
+	def saml_xml(account_credential)
 		File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
         gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
         gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
