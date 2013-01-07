@@ -1,6 +1,8 @@
 require "base64"
 require "zlib"
 require "cgi"
+require "net/http"
+require "uri"
 
 class SamlController < ApplicationController
 
@@ -14,11 +16,44 @@ class SamlController < ApplicationController
   def login
     @account_credential = AccountCredential.new(params[:account_credential])
     if @account_credential.valid?
-      redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
-      cgi_escaped_saml = CGI.escape(Base64.encode64(saml_xml(@account_credential)))
-      redirect_url << "?SAMLResponse=#{cgi_escaped_saml}"
-      #render :text => redirect_url
-      redirect_to redirect_url
+      @redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
+      @saml_response = Base64.encode64(saml_xml(@account_credential))
+    else
+      render :action => "new"
+    end
+  end
+
+  def login2
+    @account_credential = AccountCredential.new(params[:account_credential])
+    if @account_credential.valid?
+
+      #redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
+      redirect_url = "http://cbc.ch.localhost:3000/authentication/saml_authentication/idp_response"
+      #cgi_escaped_saml = CGI.escape(Base64.encode64(saml_xml(@account_credential)))
+      saml_response = Base64.encode64(saml_xml(@account_credential))
+
+      uri = URI.parse(redirect_url)
+
+      http = Net::HTTP.new(uri.host, uri.port)
+
+      request = Net::HTTP::Post.new(uri.request_uri)
+      #request.basic_auth("chstage", "stage%2011")
+      request.set_form_data({"SAMLResponse" => saml_response})
+      response = http.request(request)
+
+      if response.code == '302'
+        all_cookies = response.get_fields('set-cookie').first.split("\;")
+        request_params = Array.new
+        all_cookies.each { | cookie |
+          cookie_array = cookie.split('=')
+          cookies[cookie_array[0].to_sym] = cookie_array[1]
+        }
+        self.headers['Cookie']=response.get_fields('set-cookie')
+        redirect_to "#{response['location']}", :pepe => 130
+      else
+        @account_credential.errors[:base] << "We are sorry, there was a problem performing the login. Please try again"
+        render :action => "new"
+      end
     else
       render :action => "new"
     end
