@@ -20,12 +20,16 @@
     <%= f.text_field :employee_id %>
   </div>
   <div class="field">
+    <%= f.label :name_id %><br />
+    <%= f.text_field :name_id %>
+  </div>
+  <div class="field">
     <%= label_tag :client %><br />
     <%= select_tag :client, options_for_select({ "CBC" => "cbc", "AIC" => "aic", "Avera" => "avera" }, "cbc") %>
   </div>
   <div class="field">
     <%= label_tag :environment %><br />
-    <%= select_tag :environment, options_for_select({ "Staging" => "stg", "Merge" => "merge" }, "merge") %>
+    <%= select_tag :environment, options_for_select({ "Staging" => "stg.connectedhealth.com", "Merge" => "merge.connectedhealth.com", "Localhost" => 'ch.localhost:3000' }, "merge") %>
   </div>
   <div class="field">
     <%= label_tag :protocol %><br />

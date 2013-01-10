@@ -11,6 +11,7 @@ IdpEmulator::Application.routes.draw do
   match '/saml/keep_alive' => 'saml#keep_alive', :via => :get
   match '/saml/logout' => 'saml#logout', :via => :get
   match '/saml/finish' => 'saml#finish', :via => :get
+  match '/saml/slo' => 'saml#slo', :via => :get
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

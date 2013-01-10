@@ -72,7 +72,7 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
 	<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Version="2.0" IssueInstant="2012-09-14T18:43:38.195Z" ID="qB2z2h5RANyUaCH8euMjYrO79JZ">
 		<saml:Issuer>capbluecross.com</saml:Issuer>
 		<saml:Subject>
-			<saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">RF01-2</saml:NameID>
+			<saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">REPLACE_NAME_ID</saml:NameID>
 			<saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
 				<saml:SubjectConfirmationData NotOnOrAfter="2012-09-14T18:48:38.195Z" Recipient="http://cbc.merge.connectedhealth.com/authentication/saml_authentication/idp_response"/>
 			</saml:SubjectConfirmation>

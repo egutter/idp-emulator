@@ -16,7 +16,7 @@ class SamlController < ApplicationController
   def login
     @account_credential = AccountCredential.new(params[:account_credential])
     if @account_credential.valid?
-      @redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
+      @redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}/authentication/saml_authentication/idp_response"
       @saml_response = Base64.encode64(saml_xml(@account_credential))
     else
       render :action => "new"
@@ -92,6 +92,12 @@ class SamlController < ApplicationController
     render :text => 'Finish'
   end
 
+  def slo
+    enc_saml_response = params[:SAMLRequest]
+    decoded_saml_response = Base64.decode64(enc_saml_response)
+    render :text => "Successful SLO<br/>SAML Request received:<br/>#{ERB::Util.html_escape(inflate(decoded_saml_response))}"
+  end
+
   private
 
   def inflate(string)
@@ -106,6 +112,7 @@ class SamlController < ApplicationController
 		File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
         gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
         gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
+        gsub('REPLACE_NAME_ID', account_credential.name_id || '').
         gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).
         gsub('REPLACE_FINISH_URL', saml_finish_url).
         gsub('REPLACE_LOGOUT_URL', saml_logout_url)

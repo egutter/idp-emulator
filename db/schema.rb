@@ -10,11 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121001143539) do
+ActiveRecord::Schema.define(:version => 20130108184341) do
 
   create_table "account_credentials", :force => true do |t|
     t.string   "employee_id"
     t.string   "employer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name_id"
+  end
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_credential_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
