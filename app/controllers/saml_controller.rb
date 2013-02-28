@@ -15,8 +15,13 @@ class SamlController < ApplicationController
 
   def login
     @account_credential = AccountCredential.new(params[:account_credential])
+    if params[:client_custom].empty?
+      client = params[:client]
+    else
+      client = params[:client_custom]
+    end
     if @account_credential.valid?
-      @redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}/authentication/saml_authentication/idp_response"
+      @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}/authentication/saml_authentication/idp_response"
       @saml_response = Base64.encode64(saml_xml(@account_credential))
     else
       render :action => "new"
