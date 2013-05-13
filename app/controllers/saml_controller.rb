@@ -101,17 +101,21 @@ class SamlController < ApplicationController
     enc_saml_response = params[:SAMLRequest]
     decoded_saml_response = Base64.decode64(enc_saml_response)
 
-    pub_key_file = File.read "#{Rails.root}/config/rsa_keys/id_rsa.pub"
-    public_key = OpenSSL::PKey::RSA.new(pub_key_file, nil)
+    if params['Signature'].present?
+      pub_key_file = File.read "#{Rails.root}/config/rsa_keys/id_rsa.pub"
+      public_key = OpenSSL::PKey::RSA.new(pub_key_file, nil)
 
-    signature = Base64.decode64(params['Signature'])
-    encoded_sig_alg = CGI.escape(params['SigAlg'])
-    encoded_request   = CGI.escape(enc_saml_response)
-    url_string = "SAMLRequest=#{encoded_request}&SigAlg=#{encoded_sig_alg}"
-    valid_signature = public_key.verify(OpenSSL::Digest::SHA1.new, signature, url_string)
+      signature = Base64.decode64(params['Signature'])
+      encoded_sig_alg = CGI.escape(params['SigAlg'])
+      encoded_request   = CGI.escape(enc_saml_response)
+      url_string = "SAMLRequest=#{encoded_request}&SigAlg=#{encoded_sig_alg}"
+      valid_signature = public_key.verify(OpenSSL::Digest::SHA1.new, signature, url_string)
 
-    inflated_saml_response = inflate(decoded_saml_response)
-    render :text => "Successful SLO<br/>Valid signature? #{valid_signature}<br/>SAML Request received:<br/>#{ERB::Util.html_escape(inflated_saml_response)}"
+      inflated_saml_response = inflate(decoded_saml_response)
+      render :text => "Successful SLO<br/>Valid signature? #{valid_signature}<br/>SAML Request received:<br/>#{ERB::Util.html_escape(inflated_saml_response)}"
+    else
+      render :text => "Successful SLO<br/>SAML Request received:<br/>#{ERB::Util.html_escape(inflate(decoded_saml_response))}"
+    end
   end
 
   private
