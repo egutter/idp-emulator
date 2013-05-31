@@ -33,8 +33,8 @@
     <%= label_tag :environment %><br />
     <%= select_tag :environment, options_for_select({ "Staging" => "stg.connectedhealth.com",
                                                       "Merge" => "merge.connectedhealth.com",
-                                                      "TBox Merge" => "tb-merge.connectedhealth.com:8080",
-                                                      "TBox Staging" => "tb-stg.connectedhealth.com:8080",
+                                                      "TBox Merge" => "tb-merge.connectedhealth.com",
+                                                      "TBox Staging" => "tb-stg.connectedhealth.com",
                                                       "Localhost" => 'ch.localhost:3000' }, "merge") %>
   </div>
   <div class="field">
