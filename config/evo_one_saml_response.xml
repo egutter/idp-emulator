@@ -1,0 +1,69 @@
+<samlp:Response ID="_218626d7-1510-44f1-bd4b-9622ebb4dfda" Version="2.0" IssueInstant="2013-06-18T16:50:47.764Z" Destination="http://pjenkins01.lighthouse1.local:8181/OutboundSsoReceive.aspx" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">lighthouse1.com</saml:Issuer>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#_218626d7-1510-44f1-bd4b-9622ebb4dfda">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+            <InclusiveNamespaces PrefixList="#default samlp saml ds xs xsi" xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transform>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>yXJabNa8npRW2Kem9nkc7ZZy4EQ=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>kgV8ush+t0ceIF/bcV3TO5Sgipy93DpM3peYtNVKdsG5UskNxKZfXTudo6xr85QvDw/MCIbGSSTbczBqxy0+nel7ML0qiUUO6aWihsADSVzuJRbZwbAJys8WN5dQJFl0ZdPNH1r6vDjsxNLy88W0ioseObxVR3WrWsq1GYO3l1ugK1HFa92IODYXiIjPJll8VnrVJ+/oxdNfP/LQ9wB8ggOijpTJ+TOkxaeOidculssc9TkvE0r7TP9nr8gVCg0+GEPWB5h8jvwJTdhemcKQrbkq2m4f/8EMozR/FL0OqkoOfkoga+aSeyoWiiUeZIS4JLG/xRPXw41E+GkYsCQ/Bg==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIID+jCCAuagAwIBAgIQisOa4Ff1aaBN0jXvjQ4I7zAJBgUrDgMCHQUAMHMxMDAuBgNVBAMTJ0xpZ2h0aG91c2UxLVNlcnZlci1DQSBUcnVzdCBRQSAgTmV0d29yazEdMBsGA1UECxMUcWEubGlnaHRob3VzZTEubG9jYWwxEzARBgNVBAoTCkV2b2x1dGlvbjExCzAJBgNVBAYTAlVTMB4XDTEzMDIxNDE2MjQxMVoXDTM5MTIzMTIzNTk1OVowWDEjMCEGA1UEAxMac2VydmljZXMubGlnaHRob3VzZTEubG9jYWwxHDAaBgNVBAsTE3FhLmxpZ2hob3VzZTEubG9jYWwxEzARBgNVBAoTCkV2b2x1dGlvbjEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4BJj3hvfaf77EK+d0iBLie9EIOOFoKz/DrlHq6ItXm0IvFj9eNHFIWaq+12DSxfMM3XG4UznnYldSPcvP3msGNMXN1Tt+/jeC+f2/o4dxnXkwyeGGIQPYCxD+mJmywHIQOYEHVmVEvyD68XTN6qbFXJFVvZxZYtBz7W43UPHI3Vz6jMY9Ry0kXMz9wEaVlpKZVtj7nj7fvisBguCS5PJRiibheqBm2QQ5mMnIIipJSsoeMXfnfpAkYGFKrbARtqYRE1JMqznN6+9+Jc4V3Q7bn0G2KXB/7PREeqIDUfEuMJC+vMHBvSCh4vI+UF5L4MSuBorz4k0YHh95AEaHDbgDAgMBAAGjgawwgakwgaYGA1UdAQSBnjCBm4AQqSiXDAv4irFKj7SwtJroxKF1MHMxMDAuBgNVBAMTJ0xpZ2h0aG91c2UxLVNlcnZlci1DQSBUcnVzdCBRQSAgTmV0d29yazEdMBsGA1UECxMUcWEubGlnaHRob3VzZTEubG9jYWwxEzARBgNVBAoTCkV2b2x1dGlvbjExCzAJBgNVBAYTAlVTghDLvb5TJsPin0UrR3PLsIG1MAkGBSsOAwIdBQADggEBAHSbsbOCGv6GjRcwGO66FTHKOPCj73vqVz8maugXf6G5XM6UaxM0j8YUMxbkaZVbbBRFsT2XqKw5Xf+8Fp99CIugpeiZl/oXbn3vAPBVQ9x9hmWTXb28vXqLmKDaUWquQipWPwdb6DrZsqLw46ts+yfBhyjsj3I+sEq0IjGe0mkpis1FP9OTVQss9J7vq+7KuYDPuJJHmlwLEK1sb67ldrXgKfLTyvNzogfp0FYkaCxzCZYgoXCaNku6ZkkO6c5IBupuntLReP4iFjghK0yiWFs1j5+lP5gzP2rSApj9eViexcFiAoatUR5R39MsKCyemZ2x5OVC4aByPeungd8Q5e4=</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+  </samlp:Status>
+  <saml:Assertion Version="2.0" ID="_b8efc345-eb83-4f0d-aa86-1295e08f8c23" IssueInstant="2013-06-18T16:50:47.769Z" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+    <saml:Issuer>lighthouse1.com</saml:Issuer>
+    <saml:Subject>
+      <saml:NameID>REPLACE_NAME_ID</saml:NameID>
+      <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml:SubjectConfirmationData Recipient="http://pjenkins01.lighthouse1.local:8181/OutboundSsoReceive.aspx" />
+      </saml:SubjectConfirmation>
+    </saml:Subject>
+    <saml:Conditions NotBefore="2013-06-18T16:48:47.774Z" NotOnOrAfter="2013-06-18T16:52:47.774Z" />
+    <saml:AuthnStatement AuthnInstant="2013-06-18T16:50:47.774Z">
+      <saml:AuthnContext>
+        <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</saml:AuthnContextClassRef>
+      </saml:AuthnContext>
+    </saml:AuthnStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="UtcTimeStamp" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UtcTimeStamp">
+        <saml:AttributeValue>6/18/2013 4:50:47 PM</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="AdministratorAlias" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AdministratorAlias">
+        <saml:AttributeValue>IHD</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="EmployerCode" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="EmployerCode">
+        <saml:AttributeValue>REPLACE_EMPLOYER_CODE</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="ExchangeConsumerIdentifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ExchangeConsumerIdentifier">
+        <saml:AttributeValue>REPLACE_CONSUMER_IDENTIFIER</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="SystemConsumerIdentifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="SystemConsumerIdentifier">
+        <saml:AttributeValue>REPLACE_CONSUMER_IDENTIFIER</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="PlanYearName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PlanYearName">
+        <saml:AttributeValue>Test DFC Plan</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="PlanYearStart" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PlanYearStart">
+        <saml:AttributeValue>01/01/2014 00:00:00</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
+        <saml:AttributeValue>www.intuit.com</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>

@@ -22,7 +22,8 @@ class SamlController < ApplicationController
     end
     if @account_credential.valid?
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}/authentication/saml_authentication/idp_response"
-      @saml_response = Base64.encode64(saml_xml(@account_credential))
+      saml_xml = client == 'intuit' ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
+      @saml_response = Base64.encode64(saml_xml)
     else
       render :action => "new"
     end
@@ -136,6 +137,13 @@ class SamlController < ApplicationController
         gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).
         gsub('REPLACE_FINISH_URL', saml_finish_url).
         gsub('REPLACE_LOGOUT_URL', saml_logout_url)
+	end
+
+	def evo_one_saml_xml(account_credential)
+		File.read("#{Rails.root}/config/evo_one_saml_response.xml").
+        gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
+        gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
+        gsub('REPLACE_NAME_ID', account_credential.name_id || '')
 	end
 
   def keep_alive_image_path
