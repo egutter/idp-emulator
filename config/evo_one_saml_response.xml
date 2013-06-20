@@ -109,7 +109,7 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
               <saml:AttributeValue>01/01/2014 00:00:00</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
-              <saml:AttributeValue>www.intuit.com</saml:AttributeValue>
+              <saml:AttributeValue>http://www.intuit.com</saml:AttributeValue>
             </saml:Attribute>
         </saml:AttributeStatement>
 	</saml:Assertion>
