@@ -92,7 +92,9 @@ class SamlController < ApplicationController
     Rails.logger.info "Logged out at #{Time.now.strftime Time::DATE_FORMATS[:db]}"
 
     response = Base64.encode64 File.read("#{Rails.root}/config/slo_successful_response.xml")
-    redirect_to "#{request.referer}/authentication/saml_authentication/slo_response?SAMLResponse=#{response}"
+
+    referer_url = URI(request.referer)
+    redirect_to "#{referer_url.scheme}://#{referer_url.host}:#{referer_url.port}/authentication/saml_authentication/slo_response?SAMLResponse=#{response}"
   end
 
   def finish
