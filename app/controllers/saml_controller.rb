@@ -147,7 +147,9 @@ class SamlController < ApplicationController
 		File.read("#{Rails.root}/config/evo_one_saml_response.xml").
         gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
         gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
-        gsub('REPLACE_NAME_ID', account_credential.name_id || '')
+        gsub('REPLACE_NAME_ID', account_credential.name_id || '').
+        gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
+        gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
 	end
 
   def keep_alive_image_path

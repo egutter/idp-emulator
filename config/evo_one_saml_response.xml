@@ -103,10 +103,10 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
               <saml:AttributeValue>REPLACE_CONSUMER_IDENTIFIER</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="PlanYearName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PlanYearName">
-              <saml:AttributeValue>Test DFC Plan</saml:AttributeValue>
+              <saml:AttributeValue>REPLACE_PLAN_YEAR_NAME</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="PlanYearStart" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PlanYearStart">
-              <saml:AttributeValue>01/01/2014 00:00:00</saml:AttributeValue>
+              <saml:AttributeValue>REPLACE_PLAN_YEAR_START</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
               <saml:AttributeValue>http://www.intuit.com</saml:AttributeValue>

@@ -20,8 +20,16 @@
     <%= f.text_field :employee_id %>
   </div>
   <div class="field">
-    <%= f.label :name_id %><br />
+    <%= f.label :name_id %> (not required)<br />
     <%= f.text_field :name_id %>
+  </div>
+  <div class="field">
+    <%= f.label :plan_year_name %> (only required for Intuit)<br />
+    <%= f.text_field :plan_year_name %>
+  </div>
+  <div class="field">
+    <%= f.label :plan_year_start %> (only required for Intuit)<br />
+    <%= f.text_field :plan_year_start, :placeholder => 'MM/DD/YYYY HH:MM:SS' %>
   </div>
   <div class="field">
     <%= label_tag :client %><br />
