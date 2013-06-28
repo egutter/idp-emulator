@@ -108,8 +108,11 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
             <saml:Attribute Name="PlanYearStart" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PlanYearStart">
               <saml:AttributeValue>REPLACE_PLAN_YEAR_START</saml:AttributeValue>
             </saml:Attribute>
+            <saml:Attribute Name="KeepAliveUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="KeepAliveUrl">
+              <saml:AttributeValue>http://staging.lh1ondemand.com/images/keep_alive.gif</saml:AttributeValue>
+            </saml:Attribute>
             <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
-              <saml:AttributeValue>http://www.intuit.com</saml:AttributeValue>
+              <saml:AttributeValue>http://staging.lh1ondemand.com/Enrollment/DefinedContributionEnrollment.aspx</saml:AttributeValue>
             </saml:Attribute>
         </saml:AttributeStatement>
 	</saml:Assertion>
