@@ -33,7 +33,14 @@
   </div>
   <div class="field">
     <%= label_tag :client %><br />
-    <%= select_tag :client, options_for_select({ "CBC" => "cbc", "AIC" => "aic", "Avera Group" => "avera-group", "AultCare Group" => 'aultcare-group', "Intuit" => 'intuit' }, "cbc") %>
+    <%= select_tag :client, options_for_select({
+        "CBC" => "cbc",
+        "AIC" => "aic",
+        "Avera Group" => "avera-group",
+        "AultCare Group" => 'aultcare-group',
+        "Intuit" => 'intuit',
+        "Assurant" => "assurant",
+      }, "cbc") %>
     ...or enter custom client subdomain <small>(if set, takes priority)</small>
     <%= text_field_tag :client_custom %>    
   </div>
