@@ -9,6 +9,8 @@ class SamlController < ApplicationController
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
   PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
 
+  EVOLUTION_ONE_CLIENTS = %w(intuit assurant)
+
   def new
     @account_credential = AccountCredential.new
   end
@@ -22,7 +24,7 @@ class SamlController < ApplicationController
     end
     if @account_credential.valid?
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}/authentication/saml_authentication/idp_response"
-      saml_xml = client == 'intuit' ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
+      saml_xml = EVOLUTION_ONE_CLIENTS.include?(client) ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
       @saml_response = Base64.encode64(saml_xml)
     else
       render :action => "new"
