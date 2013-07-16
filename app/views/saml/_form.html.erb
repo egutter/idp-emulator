@@ -47,11 +47,11 @@
   </div>
   <div class="field">
     <%= label_tag :environment %><br />
-    <%= select_tag :environment, options_for_select({ "Staging" => "stg.connectedhealth.com:",
-                                                      "Merge" => "merge.connectedhealth.com:",
-                                                      "TBox Merge" => "tb-merge.connectedhealth.com:",
-                                                      "TBox Staging" => "tb-stg.connectedhealth.com:",
-                                                      "Localhost" => 'ch.localhost:3000' }, "merge") %>
+    <%= select_tag :environment, options_for_select({ "Staging" => "stg.connectedhealth.com",
+                                                      "Merge" => "merge.connectedhealth.com",
+                                                      "TBox Merge" => "tb-merge.connectedhealth.com",
+                                                      "TBox Staging" => "tb-stg.connectedhealth.com",
+                                                      "Localhost" => 'ch.localhost' }, "merge") %>
   </div>
   <div class="field">
     <%= label_tag :protocol %><br />

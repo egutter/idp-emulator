@@ -23,8 +23,7 @@ class SamlController < ApplicationController
       client = params[:client_custom]
     end
     if @account_credential.valid?
-      #params[:port]}
-      @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}/authentication/saml_authentication/idp_response"
+      @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}:#{params[:port]}/authentication/saml_authentication/idp_response"
       saml_xml = EVOLUTION_ONE_CLIENTS.include?(client) ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
       @saml_response = Base64.encode64(saml_xml)
     else
