@@ -6,11 +6,15 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'nokogiri'
+gem 'jquery-rails'
 
 group :production do
   gem "pg"
 end
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-debugger'		
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 

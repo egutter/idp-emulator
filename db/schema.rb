@@ -22,11 +22,4 @@ ActiveRecord::Schema.define(:version => 20130626163147) do
     t.string   "plan_year_start"
   end
 
-  create_table "accounts", :force => true do |t|
-    t.string   "name"
-    t.integer  "account_credential_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

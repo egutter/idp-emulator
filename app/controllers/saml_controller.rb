@@ -23,6 +23,7 @@ class SamlController < ApplicationController
       client = params[:client_custom]
     end
     if @account_credential.valid?
+      #params[:port]}
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}/authentication/saml_authentication/idp_response"
       saml_xml = EVOLUTION_ONE_CLIENTS.include?(client) ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
       @saml_response = Base64.encode64(saml_xml)
@@ -30,16 +31,16 @@ class SamlController < ApplicationController
       render :action => "new"
     end
   end
-
+  
   def login2
     @account_credential = AccountCredential.new(params[:account_credential])
     if @account_credential.valid?
-
+      
       #redirect_url = "#{params[:protocol]}://#{params[:client]}.#{params[:environment]}.connectedhealth.com/authentication/saml_authentication/idp_response"
       redirect_url = "http://cbc.ch.localhost:3000/authentication/saml_authentication/idp_response"
       #cgi_escaped_saml = CGI.escape(Base64.encode64(saml_xml(@account_credential)))
       saml_response = Base64.encode64(saml_xml(@account_credential))
-
+      
       uri = URI.parse(redirect_url)
 
       http = Net::HTTP.new(uri.host, uri.port)
@@ -66,25 +67,25 @@ class SamlController < ApplicationController
       render :action => "new"
     end
   end
-
-	def signon
-		encoded_saml = params[:SAMLRequest]
+  
+  def signon
+    encoded_saml = params[:SAMLRequest]
     decoded_saml = inflate(Base64.decode64(encoded_saml))
-
+    
     puts "decoded_saml #{decoded_saml}"
-
+    
     redirect_url = Nokogiri.XML(decoded_saml).at_xpath('//samlp:AuthnRequest').attribute('AssertionConsumerServiceURL').value
     redirect_url << "?SAMLResponse=#{CGI.escape(Base64.encode64(saml_xml(AccountCredential.instance)))}"
     redirect_to redirect_url
-
+    
     #raise "#{decoded_saml}"
-    #render :text => redirect_url
-	end
-
-	def show
-		render :text => saml_xml(AccountCredential.instance).html_safe
-	end
-
+          #render :text => redirect_url
+  end
+        
+  def show
+    render :text => saml_xml(AccountCredential.instance).html_safe
+  end
+  
   def keep_alive
     Rails.logger.info "Keep alive hit - #{Time.now.strftime Time::DATE_FORMATS[:db]}"
     render :text => open(keep_alive_image_path, 'rb').read
@@ -135,24 +136,24 @@ class SamlController < ApplicationController
     buf
   end
 
-	def saml_xml(account_credential)
-		File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
-        gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
-        gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
-        gsub('REPLACE_NAME_ID', account_credential.name_id || '').
-        gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).
-        gsub('REPLACE_FINISH_URL', saml_finish_url).
-        gsub('REPLACE_LOGOUT_URL', saml_logout_url)
-	end
-
-	def evo_one_saml_xml(account_credential)
-		File.read("#{Rails.root}/config/evo_one_saml_response.xml").
-        gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
-        gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
-        gsub('REPLACE_NAME_ID', account_credential.name_id || '').
-        gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
-        gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
-	end
+  def saml_xml(account_credential)
+    File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
+      gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
+      gsub('REPLACE_EMPLOYEE_ID', account_credential.employee_id).
+      gsub('REPLACE_NAME_ID', account_credential.name_id || '').
+      gsub('REPLACE_KEEP_ALIVE_URL', saml_keep_alive_url).
+      gsub('REPLACE_FINISH_URL', saml_finish_url).
+      gsub('REPLACE_LOGOUT_URL', saml_logout_url)
+  end
+  
+  def evo_one_saml_xml(account_credential)
+    File.read("#{Rails.root}/config/evo_one_saml_response.xml").
+      gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
+      gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
+      gsub('REPLACE_NAME_ID', account_credential.name_id || '').
+      gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
+      gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
+  end
 
   def keep_alive_image_path
     'public/images/keep-alive.png'
