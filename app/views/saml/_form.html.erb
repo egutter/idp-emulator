@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'login.js' %>
 <%= form_for(@account_credential, :url => saml_login_path ) do |f| %>
   <% if @account_credential.errors.any? %>
     <div id="error_explanation">
@@ -50,12 +51,17 @@
                                                       "Merge" => "merge.connectedhealth.com",
                                                       "TBox Merge" => "tb-merge.connectedhealth.com",
                                                       "TBox Staging" => "tb-stg.connectedhealth.com",
-                                                      "Localhost" => 'ch.localhost:3000' }, "merge") %>
+                                                      "Localhost" => 'ch.localhost' }, "merge") %>
   </div>
   <div class="field">
     <%= label_tag :protocol %><br />
     <%= select_tag :protocol, options_for_select({ "http" => "http", "https" => "https" }, "http") %>
   </div>
+  <div class="field">
+    <%= label_tag :port %><br />
+    <%= text_field_tag :port, 80 %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Login" %>
   </div>
