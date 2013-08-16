@@ -5,6 +5,7 @@ require "net/http"
 require "uri"
 
 class SamlController < ApplicationController
+  protect_from_forgery :except => [:echo_name_id]
 
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
   PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
@@ -12,7 +13,8 @@ class SamlController < ApplicationController
   EVOLUTION_ONE_CLIENTS = %w(intuit assurant)
 
   def new
-    @account_credential = AccountCredential.new
+    @account_credential = AccountCredential.new(params[:account_credential])
+    @client = params[:client]
   end
 
   def login
@@ -24,7 +26,13 @@ class SamlController < ApplicationController
     end
     if @account_credential.valid?
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}:#{params[:port]}/authentication/saml_authentication/idp_response"
-      saml_xml = EVOLUTION_ONE_CLIENTS.include?(client) ? evo_one_saml_xml(@account_credential) : saml_xml(@account_credential)
+      saml_xml = if EVOLUTION_ONE_CLIENTS.include?(client)
+          evo_one_saml_xml(@account_credential)
+        elsif client == 'cbcffm'
+          cbcffm_saml_xml(@account_credential)
+        else
+          saml_xml(@account_credential)
+        end
       @saml_response = Base64.encode64(saml_xml)
     else
       render :action => "new"
@@ -89,6 +97,14 @@ class SamlController < ApplicationController
     end
   end
 
+  def echo_name_id
+    xml = Nokogiri::XML(Base64.decode64(params['SAMLResponse']))
+    xml.remove_namespaces!
+
+    name_id = xml.at_xpath('//NameID').try(:text) 
+    render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffm&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
+  end
+
   private
 
   def inflate(string)
@@ -114,6 +130,16 @@ class SamlController < ApplicationController
       gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
       gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
       gsub('REPLACE_NAME_ID', account_credential.name_id || '').
+      gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
+      gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
+  end
+
+  def cbcffm_saml_xml(account_credential)
+    File.read("#{Rails.root}/config/cbcffm_saml_response.xml").
+      gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
+      gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
+      gsub('REPLACE_NAME_ID', account_credential.name_id || '').
+      gsub('REPLACE_UUID', account_credential.uuid || '').
       gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
       gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
   end

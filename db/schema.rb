@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626163147) do
+ActiveRecord::Schema.define(:version => 20130816150600) do
 
   create_table "account_credentials", :force => true do |t|
     t.string   "employee_id"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(:version => 20130626163147) do
     t.string   "name_id"
     t.string   "plan_year_name"
     t.string   "plan_year_start"
+    t.string   "uuid"
+  end
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_credential_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

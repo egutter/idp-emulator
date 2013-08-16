@@ -33,16 +33,20 @@
     <%= f.text_field :plan_year_start, :placeholder => 'MM/DD/YYYY HH:MM:SS' %>
   </div>
   <div class="field">
+    <%= f.label :uuid %> (only used for CBCFFMr)<br />
+    <%= f.text_field :uuid, :placeholder => 'XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX' %>
+  </div>
+  <div class="field">
     <%= label_tag :client %><br />
     <%= select_tag :client, options_for_select({
-	"CBC" => "cbc",
+        "CBC" => "cbc",
         "CBC FFM" => "cbcffm",
-	"AIC" => "aic",
-	"Avera Group" => "avera-group",
-	"AultCare Group" => 'aultcare-group',
-	"Intuit" => 'intuit',
-	"Assurant" => "assurant",
-      }, "cbc") %>
+        "AIC" => "aic",
+        "Avera Group" => "avera-group",
+        "AultCare Group" => 'aultcare-group',
+        "Intuit" => 'intuit',
+        "Assurant" => "assurant",
+      }, @client || "cbc") %>
     ...or enter custom client subdomain <small>(if set, takes priority)</small>
     <%= text_field_tag :client_custom %>
   </div>

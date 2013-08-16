@@ -6,6 +6,7 @@ IdpEmulator::Application.routes.draw do
 
   match '/saml/signon' => 'saml#signon', :via => :get
   match '/saml/new' => 'saml#new', :via => :get
+  match '/saml/echo_name_id' => 'saml#echo_name_id', :via => :post
   match '/saml/login' => 'saml#login', :via => :post
   match '/saml/show' => 'saml#show', :via => :get
   match '/saml/keep_alive' => 'saml#keep_alive', :via => :get
