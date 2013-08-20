@@ -10,7 +10,7 @@ class SamlController < ApplicationController
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
   PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
 
-  EVOLUTION_ONE_CLIENTS = %w(intuit assurant)
+  EVOLUTION_ONE_CLIENTS = %w(intuit assurant paychex)
 
   def new
     @account_credential = AccountCredential.new(params[:account_credential])
