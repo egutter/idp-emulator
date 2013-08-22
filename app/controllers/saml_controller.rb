@@ -28,7 +28,7 @@ class SamlController < ApplicationController
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}:#{params[:port]}/authentication/saml_authentication/idp_response"
       saml_xml = if EVOLUTION_ONE_CLIENTS.include?(client)
           evo_one_saml_xml(@account_credential)
-        elsif client == 'cbcffm'
+        elsif client == 'cbcffmr'
           cbcffm_saml_xml(@account_credential)
         else
           saml_xml(@account_credential)
