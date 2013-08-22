@@ -102,7 +102,7 @@ class SamlController < ApplicationController
     xml.remove_namespaces!
 
     name_id = xml.at_xpath('//NameID').try(:text) 
-    render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffm&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
+    render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
   end
 
   private
