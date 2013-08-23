@@ -87,7 +87,11 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
 			</saml:AuthnContext>
 		</saml:AuthnStatement>
         <saml:AttributeStatement>
-            <saml:Attribute Name="PartnerLoggingToken" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="Authenticated">
+            <saml:Attribute Name="Authenticated" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="Authenticated">
+              <saml:AttributeValue>True</saml:AttributeValue>
+            </saml:Attribute>
+
+            <saml:Attribute Name="PartnerLoggingToken" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="PartnerLoggingToken">
               <saml:AttributeValue>REPLACE_PARTNER_TOKEN</saml:AttributeValue>
             </saml:Attribute>
 

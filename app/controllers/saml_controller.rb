@@ -137,7 +137,7 @@ class SamlController < ApplicationController
   end
 
   def cbcffmr_saml_xml(account_credential)
-    File.read("#{Rails.root}/config/cbcffma_saml_response.xml").
+    File.read("#{Rails.root}/config/cbcffmr_saml_response.xml").
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
       gsub('REPLACE_RETURN_URL', "http://foo.com").
       gsub('REPLACE_CLIENT_ID', account_credential.uuid).
