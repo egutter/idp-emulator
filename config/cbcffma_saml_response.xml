@@ -87,24 +87,26 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
 			</saml:AuthnContext>
 		</saml:AuthnStatement>
         <saml:AttributeStatement>
-            <saml:Attribute Name="UtcTimeStamp" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UtcTimeStamp">
-              <saml:AttributeValue>6/18/2013 4:50:47 PM</saml:AttributeValue>
+            <saml:Attribute Name="Authenticated" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="Authenticated">
+              <saml:AttributeValue>False</saml:AttributeValue>
             </saml:Attribute>
-            <saml:Attribute Name="AdministratorAlias" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AdministratorAlias">
-              <saml:AttributeValue>IHD</saml:AttributeValue>
+
+            <saml:Attribute Name="PartnerLoggingToken" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="Authenticated">
+              <saml:AttributeValue>REPLACE_PARTNER_TOKEN</saml:AttributeValue>
             </saml:Attribute>
-            <saml:Attribute Name="EmployerCode" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="EmployerCode">
-              <saml:AttributeValue>REPLACE_EMPLOYER_CODE</saml:AttributeValue>
+
+            <saml:Attribute Name="ReturnURL" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="Authenticated">
+              <saml:AttributeValue>REPLACE_RETURN_URL</saml:AttributeValue>
             </saml:Attribute>
-            <saml:Attribute Name="ExchangeConsumerIdentifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ExchangeConsumerIdentifier">
-              <saml:AttributeValue>REPLACE_CONSUMER_IDENTIFIER</saml:AttributeValue>
+
+            <saml:Attribute Name="ClientID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ClientID">
+              <saml:AttributeValue>REPLACE_CLIENT_ID</saml:AttributeValue>
             </saml:Attribute>
-            <saml:Attribute Name="SystemConsumerIdentifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="SystemConsumerIdentifier">
-              <saml:AttributeValue>REPLACE_CONSUMER_IDENTIFIER</saml:AttributeValue>
+
+            <saml:Attribute Name="ShoppingCartID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ShoppingCartID">
+              <saml:AttributeValue>REPLACE_CART_ID</saml:AttributeValue>
             </saml:Attribute>
-            <saml:Attribute Name="UUID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UUID">
-              <saml:AttributeValue>REPLACE_UUID</saml:AttributeValue>
-            </saml:Attribute>
+
             <saml:Attribute Name="KeepAliveUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="KeepAliveUrl">
               <saml:AttributeValue>http://staging.lh1ondemand.com/images/keep_alive.gif</saml:AttributeValue>
             </saml:Attribute>

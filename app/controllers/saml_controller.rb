@@ -28,8 +28,10 @@ class SamlController < ApplicationController
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}:#{params[:port]}/authentication/saml_authentication/idp_response"
       saml_xml = if EVOLUTION_ONE_CLIENTS.include?(client)
           evo_one_saml_xml(@account_credential)
+        elsif client == 'cbcffma'
+          cbcffma_saml_xml(@account_credential)
         elsif client == 'cbcffmr'
-          cbcffm_saml_xml(@account_credential)
+          cbcffmr_saml_xml(@account_credential)
         else
           saml_xml(@account_credential)
         end
@@ -134,18 +136,23 @@ class SamlController < ApplicationController
       gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
   end
 
-  def cbcffm_saml_xml(account_credential)
-    File.read("#{Rails.root}/config/cbcffm_saml_response.xml").
-      gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
-      gsub('REPLACE_CONSUMER_IDENTIFIER', account_credential.employee_id).
-      gsub('REPLACE_NAME_ID', account_credential.name_id || '').
-      gsub('REPLACE_UUID', account_credential.uuid || '').
-      gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
-      gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
+  def cbcffmr_saml_xml(account_credential)
+    File.read("#{Rails.root}/config/cbcffma_saml_response.xml").
+      gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
+      gsub('REPLACE_RETURN_URL', "http://foo.com").
+      gsub('REPLACE_CLIENT_ID', account_credential.uuid).
+      gsub('REPLACE_CART_ID', account_credential.uuid)
+  end
+
+  def cbcffma_saml_xml(account_credential)
+    File.read("#{Rails.root}/config/cbcffma_saml_response.xml").
+      gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
+      gsub('REPLACE_RETURN_URL', "http://foo.com").
+      gsub('REPLACE_CLIENT_ID', "").
+      gsub('REPLACE_CART_ID', "")
   end
 
   def keep_alive_image_path
     'public/images/keep-alive.png'
   end
-
 end
