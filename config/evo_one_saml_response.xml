@@ -91,7 +91,7 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
               <saml:AttributeValue>6/18/2013 4:50:47 PM</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="AdministratorAlias" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AdministratorAlias">
-              <saml:AttributeValue>IHD</saml:AttributeValue>
+              <saml:AttributeValue>REPLACE_ADMINISTRATOR_ALIAS</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="EmployerCode" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="EmployerCode">
               <saml:AttributeValue>REPLACE_EMPLOYER_CODE</saml:AttributeValue>
@@ -112,7 +112,7 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
               <saml:AttributeValue>http://staging.lh1ondemand.com/images/keep_alive.gif</saml:AttributeValue>
             </saml:Attribute>
             <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
-              <saml:AttributeValue>http://staging.lh1ondemand.com/Enrollment/DefinedContributionEnrollment.aspx</saml:AttributeValue>
+              <saml:AttributeValue>http://staging.lh1ondemand.com:8080/Enrollment/DefinedContributionEnrollment.aspx</saml:AttributeValue>
             </saml:Attribute>
         </saml:AttributeStatement>
 	</saml:Assertion>

@@ -18,18 +18,22 @@
   </div>
   <div class="field">
     <%= f.label :employee_id %><br />
-    <%= f.text_field :employee_id %>
+    <%= f.text_field :employee_id, :style => 'width: 300px' %>
   </div>
   <div class="field">
     <%= f.label :name_id %> (not required)<br />
     <%= f.text_field :name_id %>
   </div>
   <div class="field">
-    <%= f.label :plan_year_name %> (only required for Assurant &amp; Intuit)<br />
+    <%= f.label :administrator_alias %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
+    <%= f.text_field :administrator_alias, :value => "IHD" %>
+  </div>
+  <div class="field">
+    <%= f.label :plan_year_name %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
     <%= f.text_field :plan_year_name %>
   </div>
   <div class="field">
-    <%= f.label :plan_year_start %> (only required for Assurant &amp; Intuit)<br />
+    <%= f.label :plan_year_start %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
     <%= f.text_field :plan_year_start, :placeholder => 'MM/DD/YYYY HH:MM:SS' %>
   </div>
   <div class="field">
