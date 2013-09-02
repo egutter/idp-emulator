@@ -114,6 +114,15 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
             <saml:Attribute Name="ReturnUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="ReturnUrl">
               <saml:AttributeValue>http://staging.lh1ondemand.com:8080/Enrollment/DefinedContributionEnrollment.aspx</saml:AttributeValue>
             </saml:Attribute>
+            <saml:Attribute Name="AgentCode" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AgentCode">
+              <saml:AttributeValue>REPLACE_AGENT_CODE</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="AgentName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AgentName">
+              <saml:AttributeValue>REPLACE_AGENT_NAME</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="AgentPhone" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="AgentPhone">
+              <saml:AttributeValue>REPLACE_AGENT_PHONE</saml:AttributeValue>
+            </saml:Attribute>
         </saml:AttributeStatement>
 	</saml:Assertion>
 </samlp:Response>

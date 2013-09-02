@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826195359) do
+ActiveRecord::Schema.define(:version => 20130902171945) do
 
   create_table "account_credentials", :force => true do |t|
     t.string   "employee_id"
@@ -22,13 +22,9 @@ ActiveRecord::Schema.define(:version => 20130826195359) do
     t.string   "plan_year_start"
     t.string   "uuid"
     t.string   "administrator_alias"
-  end
-
-  create_table "accounts", :force => true do |t|
-    t.string   "name"
-    t.integer  "account_credential_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "agent_name"
+    t.string   "agent_phone"
+    t.string   "agent_code"
   end
 
 end

@@ -134,7 +134,10 @@ class SamlController < ApplicationController
       gsub('REPLACE_NAME_ID', account_credential.name_id || '').
       gsub('REPLACE_ADMINISTRATOR_ALIAS', account_credential.administrator_alias).
       gsub('REPLACE_PLAN_YEAR_NAME', account_credential.plan_year_name).
-      gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start)
+      gsub('REPLACE_PLAN_YEAR_START', account_credential.plan_year_start).
+      gsub('REPLACE_AGENT_NAME', account_credential.agent_name).
+      gsub('REPLACE_AGENT_PHONE', account_credential.agent_phone).
+      gsub('REPLACE_AGENT_CODE', account_credential.agent_code)
   end
 
   def cbcffmr_saml_xml(account_credential)
