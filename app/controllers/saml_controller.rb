@@ -143,7 +143,7 @@ class SamlController < ApplicationController
   def cbcffmr_saml_xml(account_credential)
     File.read("#{Rails.root}/config/cbcffmr_saml_response.xml").
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
-      gsub('REPLACE_RETURN_URL', "http://foo.com").
+      gsub('REPLACE_RETURN_URL', "http://idp-emulator.herokuapp.com/saml/echo_name_id").
       gsub('REPLACE_CLIENT_ID', account_credential.uuid).
       gsub('REPLACE_CART_ID', account_credential.uuid)
   end
@@ -151,7 +151,7 @@ class SamlController < ApplicationController
   def cbcffma_saml_xml(account_credential)
     File.read("#{Rails.root}/config/cbcffma_saml_response.xml").
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
-      gsub('REPLACE_RETURN_URL', "http://foo.com").
+      gsub('REPLACE_RETURN_URL', "http://idp-emulator.herokuapp.com/saml/echo_name_id").
       gsub('REPLACE_CLIENT_ID', "").
       gsub('REPLACE_CART_ID', "")
   end
