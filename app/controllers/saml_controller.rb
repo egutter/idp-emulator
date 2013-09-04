@@ -102,8 +102,7 @@ class SamlController < ApplicationController
   def echo_name_id
     xml = Nokogiri::XML(Base64.decode64(params['SAMLResponse']))
     xml.remove_namespaces!
-
-    name_id = xml.at_xpath('//NameID').try(:text) 
+    name_id = xml.at_xpath('//Attribute[@Name="ShoppingCartID"]/AttributeValue').try(:text) 
     render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
   end
 
@@ -143,7 +142,7 @@ class SamlController < ApplicationController
   def cbcffmr_saml_xml(account_credential)
     File.read("#{Rails.root}/config/cbcffmr_saml_response.xml").
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
-      gsub('REPLACE_RETURN_URL', "http://idp-emulator.herokuapp.com/saml/echo_name_id").
+      gsub('REPLACE_RETURN_URL', saml_echo_name_id_url).
       gsub('REPLACE_CLIENT_ID', account_credential.uuid).
       gsub('REPLACE_CART_ID', account_credential.uuid)
   end
@@ -151,7 +150,7 @@ class SamlController < ApplicationController
   def cbcffma_saml_xml(account_credential)
     File.read("#{Rails.root}/config/cbcffma_saml_response.xml").
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
-      gsub('REPLACE_RETURN_URL', "http://idp-emulator.herokuapp.com/saml/echo_name_id").
+      gsub('REPLACE_RETURN_URL', saml_echo_name_id_url).
       gsub('REPLACE_CLIENT_ID', "").
       gsub('REPLACE_CART_ID', "")
   end
