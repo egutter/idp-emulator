@@ -106,6 +106,13 @@ class SamlController < ApplicationController
     render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
   end
 
+  # Log out
+  def request_slo
+    @redirect_url = 'http://cbcffmr.ch.localhost:3000/authentication/saml_authentication'
+    @saml_response = Base64.encode64(slo_xml)
+    render action: 'login'
+  end
+
   private
 
   def inflate(string)
@@ -114,6 +121,10 @@ class SamlController < ApplicationController
     zstream.finish
     zstream.close
     buf
+  end
+
+  def slo_xml()
+    File.read("#{Rails.root}/config/slo.xml")
   end
 
   def saml_xml(account_credential)
