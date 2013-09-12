@@ -1,12 +1,33 @@
-<samlp:LogoutRequest NotOnOrAfter="2013-09-05T15:46:25.158Z"
-IssueInstant="2013-09-05T15:41:25.158Z"
-ID="PWGC33YpYuI6m0fSWFpS9xwbcJL" Version="2.0"
-xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
-  <saml:Issuer>pex.capbluecross.com</saml:Issuer>
-  <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">
-  ConsumerMarketplaceManager-Registered_User</saml:NameID>
-  <samlp:SessionIndex>
-  hncpnRYGzOQrwCpCFxfD097YQ9z
-  </samlp:SessionIndex>
+<samlp:LogoutRequest Destination="http://cbcffma.merge.connectedhealth.com:8080/authentication/saml_authentication/idp_response"
+                     NotOnOrAfter="2013-09-06T19:29:09.419Z"
+                     IssueInstant="2013-09-06T19:24:09.419Z"
+                     ID="RXBDBOX5e7BuMoqx.wTgxRPB10b"
+                     Version="2.0"
+                     xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+                     xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                     >
+    <saml:Issuer>pex.capbluecross.com</saml:Issuer>
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:SignedInfo>
+            <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+            <ds:Reference URI="#RXBDBOX5e7BuMoqx.wTgxRPB10b">
+                <ds:Transforms>
+                    <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                    <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                </ds:Transforms>
+                <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                <ds:DigestValue>sbV8k9M4no+hpoZAA+yrlBn99+C8y5+QN0xlbEAEwZs=</ds:DigestValue>
+            </ds:Reference>
+        </ds:SignedInfo>
+        <ds:SignatureValue>
+fNUd3G5P1t70i7GjdHPEa3Qn4j4ofN7ZYobHhgRJHLeNng036I7+W/E8g3JYZMDwPQoNJgNZEAYa
+LEVz6iBUYobsjSQbtfk+pRfEekI2KdOAE9O1zbRTkFULlMS4Ho2iuELh3WeuS47KDi7+l0NhYvVv
++hUmtmTr8JMmICCkbqdCaX2uarDD7hVBS21Ok35c+2EmRPSznzUnNua46M1mbT+hz9tUievUPLlj
+qbzvJQ6xHUpjinAy/MeWkpFN0mjfUpsXkqXPIH6U3w4KQM3Mn6/BJI3NNvYNQiMZvS4do0Yqd+m6
+Px3f4pgjfb05ZGSl0wLvYYMf0QGcJvUZ86921w==
+</ds:SignatureValue>
+    </ds:Signature>
+    <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">ivention</saml:NameID>
+    <samlp:SessionIndex>hncpnRYGzOQrwCpCFxfD097YQ9z</samlp:SessionIndex>
 </samlp:LogoutRequest>
