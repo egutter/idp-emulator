@@ -107,6 +107,18 @@ wf+N9nVTUtr/9gmQXPNjlFdUako+yArHUAzgaQ==
               <saml:AttributeValue>REPLACE_CART_ID</saml:AttributeValue>
             </saml:Attribute>
 
+            <saml:Attribute Name="UserType" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UserType">
+              <saml:AttributeValue>Consumer</saml:AttributeValue>
+            </saml:Attribute>
+
+            <saml:Attribute Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="FirstName">
+              <saml:AttributeValue>John</saml:AttributeValue>
+            </saml:Attribute>
+
+            <saml:Attribute Name="LastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="LastName">
+              <saml:AttributeValue>Doe</saml:AttributeValue>
+            </saml:Attribute>
+
             <saml:Attribute Name="KeepAliveUrl" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="KeepAliveUrl">
               <saml:AttributeValue>http://staging.lh1ondemand.com/images/keep_alive.gif</saml:AttributeValue>
             </saml:Attribute>
