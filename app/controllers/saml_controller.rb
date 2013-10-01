@@ -12,8 +12,32 @@ class SamlController < ApplicationController
 
   EVOLUTION_ONE_CLIENTS = %w(intuit assurant paychex)
 
+  PRESET_LOGINS = {
+    "Assurant 0003237014" => {
+      "account_credential_employer_id" => "AHITST",
+      "account_credential_employee_id" => "0032.00101.0000056277.0003237014",
+      "account_credential_administrator_alias" => "AHI",
+      "account_credential_plan_year_name" => "AHI01012014",
+      "account_credential_plan_year_start" => "01/01/2014 00:00:00",
+      "account_credential_agent_phone" => "123-456-7890",
+      "account_credential_agent_code" => "00013311000001",
+      "client" => "assurant",
+    },
+    "CBCFFMa" => {
+      "client" => "cbcffma",
+      "account_credential_employer_id" => "a",
+      "account_credential_employee_id" => "b",
+    },
+    "CBCFFMr" => {
+      "client" => "cbcffmr",
+      "account_credential_employer_id" => "a",
+      "account_credential_employee_id" => "b",
+    },
+  }
+
   def new
     @account_credential = AccountCredential.new(params[:account_credential])
+    @preset_logins = PRESET_LOGINS
     @client = params[:client]
   end
 

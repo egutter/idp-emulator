@@ -2,4 +2,27 @@
 
 <h1>Single Sign On</h1>
 
+<ul id="presets">
+  <% @preset_logins.try(:each) do |login, fields| %>
+    <li>
+      <a href="#" onclick="loadPreset('<%= login %>'); return false;"><%= login %></a>
+    </li>
+  <% end %>
+</ul>
+
 <%= render 'form' %>
+
+<%= javascript_tag do %>
+window.preset_logins = <%= raw @preset_logins.to_json %>;
+
+window.loadPreset = function(presetName) {
+  $("input, select").val("");
+  _(window.preset_logins[presetName]).chain().
+    pairs().
+    each(function(field) {
+      var id = field[0];
+      var value = field[1];
+      $("#"+id).val(value);
+    });
+}
+<% end %>
