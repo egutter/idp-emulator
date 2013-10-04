@@ -39,9 +39,16 @@ class SamlController < ApplicationController
     @account_credential = AccountCredential.new(params[:account_credential])
     @preset_logins = PRESET_LOGINS
     @client = params[:client]
+    @last_environment = session[:last_environment]
+    @last_port        = session[:last_port] || 80
+    @last_protocol    = session[:last_protocol]
   end
 
   def login
+    @last_environment = session[:last_environment] = params[:environment]
+    @last_port        = session[:last_port]        = params[:port]
+    @last_protocol    = session[:last_protocol]    = params[:protocol]
+
     @account_credential = AccountCredential.new(params[:account_credential])
     if params[:client_custom].empty?
       client = params[:client]

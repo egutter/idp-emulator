@@ -16,7 +16,7 @@
 window.preset_logins = <%= raw @preset_logins.to_json %>;
 
 window.loadPreset = function(presetName) {
-  $("input[type='text']:not([name='port']), select").val("");
+  $("input[type='text']:not([name='port']), select:not([name='environment']):not([name='protocol'])").val("");
   _(window.preset_logins[presetName]).chain().
     pairs().
     each(function(field) {
@@ -26,3 +26,5 @@ window.loadPreset = function(presetName) {
     });
 }
 <% end %>
+
+<%= javascript_include_tag 'login.js' %>

@@ -1,7 +1,10 @@
 #presets {
   float: left;
-  height: 700px;
   border-right: 1px solid black;
   margin-right: 1em;
   padding-right: 1em;
+}
+
+form#new_account_credential {
+  float: left;
 }
