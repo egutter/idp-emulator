@@ -33,6 +33,26 @@ class SamlController < ApplicationController
       "account_credential_employer_id" => "a",
       "account_credential_employee_id" => "b",
     },
+    "CBC" => {
+      "client" => "cbc",
+      "account_credential_employer_id" => "CH-DEV",
+      "account_credential_employee_id" => "TestEE",
+    },
+    "AIC" => {
+      "client" => "aic",
+      "account_credential_employer_id" => "CH-DEV",
+      "account_credential_employee_id" => "TestEE-2",
+    },
+    "AIC (ancilliary/life)" => {
+      "client" => "aic",
+      "account_credential_employer_id" => "AIC_ANC13",
+      "account_credential_employee_id" => "9220431",
+    },
+    "AultCare" => {
+      "client" => "aultcare-group",
+      "account_credential_employer_id" => "CH-DEV",
+      "account_credential_employee_id" => "LE-Larry",
+    },
   }
 
   def new
