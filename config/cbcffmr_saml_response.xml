@@ -55,7 +55,7 @@
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="LastName">
-        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Wolfe
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_LASTNAME
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="ClientID">
@@ -63,10 +63,10 @@
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="FFMAssignedConsumerID">
-        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">94658488
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_CONSUMERID
         </saml:AttributeValue>
       </saml:Attribute><saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PartnerAssignedConsumerID">
-        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">4485
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_PARTNER_CONSUMERID
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="KeepAliveURL">
@@ -84,15 +84,15 @@
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="FirstName">
-        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Steve
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_FIRSTNAME
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PartnerLoggingToken">
-        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">101
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_PARTNER_TOKEN
         </saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute Name="UserType" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UserType">
-        <saml:AttributeValue>Consumer</saml:AttributeValue>
+        <saml:AttributeValue>REPLACE_FFM_USERTYPE</saml:AttributeValue>
       </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="LogoutURL">
         <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902171945) do
+ActiveRecord::Schema.define(:version => 20131031140926) do
 
   create_table "account_credentials", :force => true do |t|
     t.string   "employee_id"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(:version => 20130902171945) do
     t.string   "agent_name"
     t.string   "agent_phone"
     t.string   "agent_code"
+    t.string   "ffm_lastname"
+    t.string   "ffm_firstname"
+    t.string   "ffm_consumerid"
+    t.string   "ffm_partner_consumerid"
+    t.string   "ffm_partner_token"
+    t.string   "ffm_usertype"
   end
 
 end

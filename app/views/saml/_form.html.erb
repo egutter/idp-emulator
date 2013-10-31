@@ -12,6 +12,24 @@
   <% end %>
 
   <div class="field">
+    <%= label_tag :client %><br />
+    <%= select_tag :client, options_for_select(
+            {
+                    "CBC" => "cbc",
+                    "CBC FFM (anonymous)" => "cbcffma",
+                    "CBC FFM (registered)" => "cbcffmr",
+                    "AIC" => "aic",
+                    "Avera Group" => "avera-group",
+                    "AultCare Group" => 'aultcare-group',
+                    "Intuit" => 'intuit',
+                    "Assurant" => "assurant",
+                    "Paychex" => "paychex",
+            }, @client || "cbc") %>
+    ...or enter custom client subdomain <small>(if set, takes priority)</small>
+    <%= text_field_tag :client_custom %>
+  </div>
+
+  <div class="field">
     <%= f.label :employer_id %><br />
     <%= f.text_field :employer_id %>
   </div>
@@ -23,49 +41,61 @@
     <%= f.label :name_id %> (not required)<br />
     <%= f.text_field :name_id %>
   </div>
-  <div class="field">
-    <%= f.label :administrator_alias %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
-    <%= f.text_field :administrator_alias, :value => "IHD" %>
+  <div class="evo1_only">
+    <div class="field">
+      <%= f.label :administrator_alias %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :administrator_alias, :value => "IHD" %>
+    </div>
+    <div class="field">
+      <%= f.label :plan_year_name %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :plan_year_name %>
+    </div>
+    <div class="field">
+      <%= f.label :plan_year_start %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :plan_year_start, :placeholder => 'MM/DD/YYYY HH:MM:SS' %>
+    </div>
+    <div class="field">
+      <%= f.label :agent_phone %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :agent_phone %>
+    </div>
+    <div class="field">
+      <%= f.label :agent_code %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :agent_code %>
+    </div>
+    <div class="field">
+      <%= f.label :agent_name %> (only required for Ev1 clients. E.g. Assurant)<br />
+      <%= f.text_field :agent_name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :plan_year_name %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
-    <%= f.text_field :plan_year_name %>
-  </div>
-  <div class="field">
-    <%= f.label :plan_year_start %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
-    <%= f.text_field :plan_year_start, :placeholder => 'MM/DD/YYYY HH:MM:SS' %>
-  </div>
-  <div class="field">
-    <%= f.label :agent_phone %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
-    <%= f.text_field :agent_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :agent_code %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit). Working code: 00013311000001<br />
-    <%= f.text_field :agent_code %>
-  </div>
-  <div class="field">
-    <%= f.label :agent_name %> (only required for Ev1 clients. E.g. Assurant &amp; Intuit)<br />
-    <%= f.text_field :agent_name %>
-  </div>
-  <div class="field">
-    <%= f.label :uuid %> (only used for CBCFFMr)<br />
-    <%= f.text_field :uuid, :placeholder => 'XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX' %>
-  </div>
-  <div class="field">
-    <%= label_tag :client %><br />
-    <%= select_tag :client, options_for_select({
-        "CBC" => "cbc",
-        "CBC FFM (anonymous)" => "cbcffma",
-        "CBC FFM (registered)" => "cbcffmr",
-        "AIC" => "aic",
-        "Avera Group" => "avera-group",
-        "AultCare Group" => 'aultcare-group',
-        "Intuit" => 'intuit',
-        "Assurant" => "assurant",
-        "Paychex" => "paychex",
-      }, @client || "cbc") %>
-    ...or enter custom client subdomain <small>(if set, takes priority)</small>
-    <%= text_field_tag :client_custom %>
+  <div class="ffm_only">
+    <div class="field">
+      <%= f.label :uuid %> (only used for CBCFFMr)<br />
+      <%= f.text_field :uuid, :placeholder => 'XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX' %>
+    </div>
+    <div class="field">
+      <%= f.label "First name (FFM)" %><br />
+      <%= f.text_field :ffm_firstname %>
+    </div>
+    <div class="field">
+      <%= f.label "Last name (FFM)" %><br />
+      <%= f.text_field :ffm_lastname %>
+    </div>
+    <div class="field">
+      <%= f.label "Consumer ID (FFM)" %><br />
+      <%= f.text_field :ffm_consumerid %>
+    </div>
+    <div class="field">
+      <%= f.label "Partner consumer ID (FFM)" %><br />
+      <%= f.text_field :ffm_partner_consumerid %>
+    </div>
+    <div class="field">
+      <%= f.label "Partner logging token (FFM)" %><br />
+      <%= f.text_field :ffm_partner_token %>
+    </div>
+    <div class="field">
+      <%= f.label "Partner logging token (FFM)" %><br />
+      <%= f.text_field :ffm_usertype %>
+    </div>
   </div>
   <div class="field">
     <%= label_tag :environment %><br />

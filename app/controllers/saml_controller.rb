@@ -32,6 +32,12 @@ class SamlController < ApplicationController
       "client" => "cbcffmr",
       "account_credential_employer_id" => "a",
       "account_credential_employee_id" => "b",
+      "account_credential_ffm_lastname" => "Wolfe",
+      "account_credential_ffm_consumerid" => "94658488",
+      "account_credential_ffm_partner_consumerid" => "4485",
+      "account_credential_ffm_firstname" => "Steve",
+      "account_credential_ffm_partner_token" => "101",
+      "account_credential_ffm_usertype" => "Consumer",
     },
     "CBC" => {
       "client" => "cbc",
@@ -206,7 +212,13 @@ class SamlController < ApplicationController
       gsub('REPLACE_PARTNER_TOKEN', "whatever").#account_credential.partner_token).
       gsub('REPLACE_RETURN_URL', saml_echo_name_id_url).
       gsub('REPLACE_CLIENT_ID', account_credential.uuid).
-      gsub('REPLACE_CART_ID', account_credential.uuid)
+      gsub('REPLACE_CART_ID', account_credential.uuid).
+      gsub('REPLACE_FFM_LASTNAME', account_credential.ffm_lastname).
+      gsub('REPLACE_FFM_FIRSTNAME', account_credential.ffm_firstname).
+      gsub('REPLACE_FFM_CONSUMERID', account_credential.ffm_consumerid).
+      gsub('REPLACE_FFM_PARTNER_CONSUMERID', account_credential.ffm_partner_consumerid).
+      gsub('REPLACE_FFM_PARTNER_TOKEN', account_credential.ffm_partner_token).
+      gsub('REPLACE_FFM_USERTYPE', account_credential.ffm_usertype)
   end
 
   def cbcffma_saml_xml(account_credential)
