@@ -3,6 +3,11 @@
   border-right: 1px solid black;
   margin-right: 1em;
   padding-right: 1em;
+  width: 150px;
+}
+
+#presets li {
+  margin-bottom: 0.5em;
 }
 
 form#new_account_credential {
