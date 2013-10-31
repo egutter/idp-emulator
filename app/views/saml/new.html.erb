@@ -22,7 +22,7 @@ window.loadPreset = function(presetName) {
     each(function(field) {
       var id = field[0];
       var value = field[1];
-      $("#"+id).val(value);
+      $("#"+id).val(value).change();
     });
 }
 <% end %>

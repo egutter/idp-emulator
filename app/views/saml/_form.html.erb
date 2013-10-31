@@ -122,3 +122,26 @@
     <p>See <a href="https://github.com/connectedhealth/Health-Care-Cost-Calculator/wiki/Clients-users-and-credentials">Users and Credentials</a></p>
   </div>
 <% end %>
+
+<script>
+    $(function() {
+        $('.ffm_only').hide();
+        $('.evo1_only').hide();
+
+        $('#client').change(function() {
+            var selectedClient = $('#client option:selected').val();
+
+            if (selectedClient == 'cbcffmr') {
+              $('.ffm_only').show();
+            } else {
+              $('.ffm_only').hide();
+            }
+
+            if (selectedClient == 'assurant') {
+                $('.evo1_only').show();
+            } else {
+                $('.evo1_only').hide();
+            }
+        });
+    });
+</script>
