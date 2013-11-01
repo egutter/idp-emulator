@@ -94,6 +94,17 @@ class SamlController < ApplicationController
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
     },
+    "CBCFFMr - Three members, no APTC nor CSR" => {
+      "client" => "cbcffmr",
+      "account_credential_employer_id" => "a",
+      "account_credential_employee_id" => "b",
+      "account_credential_ffm_lastname" => "Wolfe",
+      "account_credential_ffm_consumerid" => "TEST",
+      "account_credential_ffm_partner_consumerid" => "006",
+      "account_credential_ffm_firstname" => "Steve",
+      "account_credential_ffm_partner_token" => "101",
+      "account_credential_ffm_usertype" => "Consumer",
+    },
     "CBC" => {
       "client" => "cbc",
       "account_credential_employer_id" => "CH-DEV",
