@@ -5,7 +5,7 @@
 
       <ul>
       <% @account_credential.errors.full_messages.each do |msg| %>
-	<li><%= msg %></li>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
@@ -15,16 +15,17 @@
     <%= label_tag :client %><br />
     <%= select_tag :client, options_for_select(
             {
-                    "CBC" => "cbc",
-                    "CBC FFM (anonymous)" => "cbcffma",
-                    "CBC FFM (registered)" => "cbcffmr",
-                    "AIC" => "aic",
-                    "Avera Group" => "avera-group",
-                    "AultCare Group" => 'aultcare-group',
-                    "Intuit" => 'intuit',
-                    "Assurant" => "assurant",
-                    "Paychex" => "paychex",
-            }, @client || "cbc") %>
+                    'CBC' => 'cbc',
+                    'CBC FFM (anonymous)' => 'cbcffma',
+                    'CBC FFM (registered)' => 'cbcffmr',
+                    'AIC' => 'aic',
+                    'Avera Group' => 'avera-group',
+                    'AultCare Group' => 'aultcare-group',
+                    'Intuit' => 'intuit',
+                    'Assurant' => 'assurant',
+                    'Paychex' => 'paychex',
+                    'Advantage' => 'advantage'
+            }, @client || 'cbc') %>
     ...or enter custom client subdomain <small>(if set, takes priority)</small>
     <%= text_field_tag :client_custom %>
   </div>
@@ -44,7 +45,7 @@
   <div class="evo1_only">
     <div class="field">
       <%= f.label :administrator_alias %> (only required for Ev1 clients. E.g. Assurant)<br />
-      <%= f.text_field :administrator_alias, :value => "IHD" %>
+      <%= f.text_field :administrator_alias, :value => 'IHD' %>
     </div>
     <div class="field">
       <%= f.label :plan_year_name %> (only required for Ev1 clients. E.g. Assurant)<br />
@@ -99,11 +100,11 @@
   </div>
   <div class="field">
     <%= label_tag :environment %><br />
-    <%= select_tag :environment, options_for_select({ "Staging" => "stg.connectedhealth.com",
-						      "Merge" => "merge.connectedhealth.com",
-						      "TBox Merge" => "tb-merge.connectedhealth.com",
-						      "TBox Staging" => "tb-stg.connectedhealth.com",
-						      "Localhost" => 'ch.localhost' }, @last_environment) %>
+    <%= select_tag :environment, options_for_select({"Staging" => "stg.connectedhealth.com",
+                                                     "Merge" => "merge.connectedhealth.com",
+                                                     "TBox Merge" => "tb-merge.connectedhealth.com",
+                                                     "TBox Staging" => "tb-stg.connectedhealth.com",
+                                                     "Localhost" => 'ch.localhost' }, @last_environment) %>
   </div>
   <div class="field">
     <%= label_tag :protocol %><br />
@@ -137,7 +138,7 @@
               $('.ffm_only').hide();
             }
 
-            if (selectedClient == 'assurant') {
+            if (selectedClient == 'assurant' || selectedClient == 'advantage') {
                 $('.evo1_only').show();
             } else {
                 $('.evo1_only').hide();
