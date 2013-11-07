@@ -10,7 +10,7 @@ class SamlController < ApplicationController
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
   PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
 
-  EVOLUTION_ONE_CLIENTS = %w(intuit assurant paychex)
+  EVOLUTION_ONE_CLIENTS = %w(advantage assurant)
 
   PRESET_LOGINS = {
     "Assurant 0003237014" => {
