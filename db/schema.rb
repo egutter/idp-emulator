@@ -33,4 +33,11 @@ ActiveRecord::Schema.define(:version => 20131031140926) do
     t.string   "ffm_usertype"
   end
 
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.integer  "account_credential_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

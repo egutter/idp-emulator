@@ -24,10 +24,22 @@
                     'Intuit' => 'intuit',
                     'Assurant' => 'assurant',
                     'Paychex' => 'paychex',
-                    'Advantage' => 'advantage'
+                    'Advantage' => 'advantage',
+                    '1Plan' => '1plan'
             }, @client || 'cbc') %>
     ...or enter custom client subdomain <small>(if set, takes priority)</small>
     <%= text_field_tag :client_custom %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :saml_type %><br />
+    <%= select_tag :saml_type, options_for_select(
+        {
+                'BRIX' => 'brix',
+                'EvolutionOne' => 'evo_one',
+                'CBC FFM (registered)' => 'cbcffmr',
+                'CBC FFM (anonymous)' => 'cbcffma',
+        }) %>
   </div>
 
   <div class="field">

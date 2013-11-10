@@ -8,7 +8,7 @@ class SamlController < ApplicationController
   protect_from_forgery :except => [:echo_name_id]
 
   ASSERTION = "urn:oasis:names:tc:SAML:2.0:assertion"
-  PROTOCOL  = "urn:oasis:names:tc:SAML:2.0:protocol"
+  PROTOCOL = "urn:oasis:names:tc:SAML:2.0:protocol"
 
   EVOLUTION_ONE_CLIENTS = %w(advantage assurant)
 
@@ -22,11 +22,13 @@ class SamlController < ApplicationController
       "account_credential_agent_phone" => "123-456-7890",
       "account_credential_agent_code" => "00013311000001",
       "client" => "assurant",
+      "saml_type" => "evo_one",
     },
     "CBCFFMa" => {
       "client" => "cbcffma",
       "account_credential_employer_id" => "a",
       "account_credential_employee_id" => "b",
+      "saml_type" => "cbcffma",
     },
     "CBCFFMr - Off Exchange" => {
       "client" => "cbcffmr",
@@ -38,6 +40,7 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBCFFMr - Brief Englandpaa" => {
       "client" => "cbcffmr",
@@ -49,6 +52,7 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBCFFMr - Great Summerspab" => {
       "client" => "cbcffmr",
@@ -60,6 +64,7 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBCFFMr - Small Terrellpab" => {
       "client" => "cbcffmr",
@@ -71,6 +76,7 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBCFFMr - Likely Velezpab" => {
       "client" => "cbcffmr",
@@ -82,6 +88,7 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBCFFMr - Ezra Humphreypau" => {
       "client" => "cbcffmr",
@@ -93,26 +100,31 @@ class SamlController < ApplicationController
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
     },
     "CBC" => {
       "client" => "cbc",
       "account_credential_employer_id" => "CH-DEV",
       "account_credential_employee_id" => "TestEE",
+      "saml_type" => "brix",
     },
     "AIC" => {
       "client" => "aic",
       "account_credential_employer_id" => "CH-DEV",
       "account_credential_employee_id" => "TestEE-2",
+      "saml_type" => "brix",
     },
     "AIC (ancilliary/life)" => {
       "client" => "aic",
       "account_credential_employer_id" => "AIC_ANC13",
       "account_credential_employee_id" => "9220431",
+      "saml_type" => "brix",
     },
     "AultCare" => {
       "client" => "aultcare-group",
       "account_credential_employer_id" => "CH-DEV",
       "account_credential_employee_id" => "LE-Larry",
+      "saml_type" => "brix",
     },
   }
 
@@ -121,14 +133,14 @@ class SamlController < ApplicationController
     @preset_logins = PRESET_LOGINS
     @client = params[:client]
     @last_environment = session[:last_environment]
-    @last_port        = session[:last_port] || 80
-    @last_protocol    = session[:last_protocol]
+    @last_port = session[:last_port] || 80
+    @last_protocol = session[:last_protocol]
   end
 
   def login
     @last_environment = session[:last_environment] = params[:environment]
-    @last_port        = session[:last_port]        = params[:port]
-    @last_protocol    = session[:last_protocol]    = params[:protocol]
+    @last_port = session[:last_port] = params[:port]
+    @last_protocol = session[:last_protocol] = params[:protocol]
 
     @account_credential = AccountCredential.new(params[:account_credential])
     if params[:client_custom].empty?
@@ -138,39 +150,31 @@ class SamlController < ApplicationController
     end
     if @account_credential.valid?
       @redirect_url = "#{params[:protocol]}://#{client}.#{params[:environment]}:#{params[:port]}/authentication/saml_authentication/idp_response"
-      saml_xml = if EVOLUTION_ONE_CLIENTS.include?(client)
-          evo_one_saml_xml(@account_credential)
-        elsif client == 'cbcffma'
-          cbcffma_saml_xml(@account_credential)
-        elsif client == 'cbcffmr'
-          cbcffmr_saml_xml(@account_credential)
-        else
-          saml_xml(@account_credential)
-        end
+      saml_xml = get_saml_xml(params[:saml_type])
       @saml_response = Base64.encode64(saml_xml)
     else
       render :action => "new"
     end
   end
-  
+
   def signon
     encoded_saml = params[:SAMLRequest]
     decoded_saml = inflate(Base64.decode64(encoded_saml))
-    
+
     puts "decoded_saml #{decoded_saml}"
-    
+
     redirect_url = Nokogiri.XML(decoded_saml).at_xpath('//samlp:AuthnRequest').attribute('AssertionConsumerServiceURL').value
     redirect_url << "?SAMLResponse=#{CGI.escape(Base64.encode64(saml_xml(AccountCredential.instance)))}"
     redirect_to redirect_url
-    
+
     #raise "#{decoded_saml}"
-          #render :text => redirect_url
+    #render :text => redirect_url
   end
-        
+
   def show
     render :text => saml_xml(AccountCredential.instance).html_safe
   end
-  
+
   def keep_alive
     Rails.logger.info "Keep alive hit - #{Time.now.strftime Time::DATE_FORMATS[:db]}"
     render :text => open(keep_alive_image_path, 'rb').read
@@ -200,7 +204,7 @@ class SamlController < ApplicationController
 
       signature = Base64.decode64(params['Signature'])
       encoded_sig_alg = CGI.escape(params['SigAlg'])
-      encoded_request   = CGI.escape(enc_saml_response)
+      encoded_request = CGI.escape(enc_saml_response)
       url_string = "SAMLRequest=#{encoded_request}&SigAlg=#{encoded_sig_alg}"
       valid_signature = public_key.verify(OpenSSL::Digest::SHA1.new, signature, url_string)
 
@@ -214,7 +218,7 @@ class SamlController < ApplicationController
   def echo_name_id
     xml = Nokogiri::XML(Base64.decode64(params['SAMLResponse']))
     xml.remove_namespaces!
-    name_id = xml.at_xpath('//Attribute[@Name="ShoppingCartID"]/AttributeValue').try(:text) 
+    name_id = xml.at_xpath('//Attribute[@Name="ShoppingCartID"]/AttributeValue').try(:text)
     render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
   end
 
@@ -239,6 +243,20 @@ class SamlController < ApplicationController
     File.read("#{Rails.root}/config/slo.xml")
   end
 
+  def get_saml_xml(saml_type)
+    if saml_type == 'evo_one'
+      evo_one_saml_xml(@account_credential)
+    elsif saml_type == 'cbcffma'
+      cbcffma_saml_xml(@account_credential)
+    elsif saml_type == 'cbcffmr'
+      cbcffmr_saml_xml(@account_credential)
+    elsif saml_type == 'brix'
+      saml_xml(@account_credential)
+    else
+      raise "Unknown SAML type"
+    end
+  end
+
   def saml_xml(account_credential)
     File.read("#{Rails.root}/config/saml_response_without_finish_url.xml").
       gsub('REPLACE_EMPLOYER_ID', account_credential.employer_id).
@@ -248,7 +266,7 @@ class SamlController < ApplicationController
       gsub('REPLACE_FINISH_URL', saml_finish_url).
       gsub('REPLACE_LOGOUT_URL', saml_logout_url)
   end
-  
+
   def evo_one_saml_xml(account_credential)
     File.read("#{Rails.root}/config/evo_one_saml_response.xml").
       gsub('REPLACE_EMPLOYER_CODE', account_credential.employer_id).
