@@ -54,6 +54,18 @@ class SamlController < ApplicationController
       "account_credential_ffm_usertype" => "Consumer",
       "saml_type" => "cbcffmr",
     },
+    "CBCFFMr - Yellow Lindsaypaa" => {
+      "client" => "cbcffmr",
+      "account_credential_employer_id" => "a",
+      "account_credential_employee_id" => "b",
+      "account_credential_ffm_lastname" => "Wolfe",
+      "account_credential_ffm_consumerid" => "94914271",
+      "account_credential_ffm_partner_consumerid" => "4807",
+      "account_credential_ffm_firstname" => "Steve",
+      "account_credential_ffm_partner_token" => "101",
+      "account_credential_ffm_usertype" => "Consumer",
+      "saml_type" => "cbcffmr",
+    },
     "CBCFFMr - Great Summerspab" => {
       "client" => "cbcffmr",
       "account_credential_employer_id" => "a",
