@@ -3,5 +3,6 @@
 <% else %>
   Login with the following uuid <a href='<%="#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{@name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b"%>'>here</a>: <%=@name_id%>
 <% end %>
+<br />
 SAML attributes received:
-<%= @saml_attributes.join('<br />') %>
+<%= @saml_attributes.join('<br />').html_safe %>
