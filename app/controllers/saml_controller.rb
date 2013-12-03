@@ -228,10 +228,10 @@ class SamlController < ApplicationController
   end
 
   def echo_name_id
-    xml = Nokogiri::XML(Base64.decode64(params['SAMLResponse']))
-    xml.remove_namespaces!
-    name_id = xml.at_xpath('//Attribute[@Name="ShoppingCartID"]/AttributeValue').try(:text)
-    render text: name_id.blank? ? "No name id present!" : "Login with the following uuid <a href='#{saml_new_path}?client=cbcffmr&account_credential[uuid]=#{name_id}&account_credential[employee_id]=a&account_credential[employer_id]=b'>here</a>: #{name_id}"
+    @xml = Nokogiri::XML(Base64.decode64(params['SAMLResponse']))
+    @xml.remove_namespaces!
+    @name_id = @xml.at_xpath('//Attribute[@Name="ShoppingCartID"]/AttributeValue').try(:text)
+    @saml_attributes = @xml.xpath('//Attribute').map {|attr| "#{attr.at_xpath('@Name').try(:value)}: #{attr.at_xpath('AttributeValue').try(:text)}"}
   end
 
   # Log out
