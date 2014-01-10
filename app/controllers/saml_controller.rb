@@ -303,7 +303,8 @@ class SamlController < ApplicationController
       gsub('REPLACE_FFM_CONSUMERID', account_credential.ffm_consumerid).
       gsub('REPLACE_FFM_PARTNER_CONSUMERID', account_credential.ffm_partner_consumerid).
       gsub('REPLACE_FFM_PARTNER_TOKEN', account_credential.ffm_partner_token).
-      gsub('REPLACE_FFM_USERTYPE', account_credential.ffm_usertype)
+      gsub('REPLACE_FFM_USERTYPE', account_credential.ffm_usertype).
+      gsub('REPLACE_FFM_ISSUER_SHOPPING_CART_ID', account_credential.ffm_issuer_shopping_cart_id)
   end
 
   def cbcffma_saml_xml(account_credential)

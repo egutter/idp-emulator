@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031140926) do
+ActiveRecord::Schema.define(:version => 20131214163231) do
 
   create_table "account_credentials", :force => true do |t|
     t.string   "employee_id"
@@ -31,13 +31,7 @@ ActiveRecord::Schema.define(:version => 20131031140926) do
     t.string   "ffm_partner_consumerid"
     t.string   "ffm_partner_token"
     t.string   "ffm_usertype"
-  end
-
-  create_table "accounts", :force => true do |t|
-    t.string   "name"
-    t.integer  "account_credential_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "ffm_issuer_shopping_cart_id"
   end
 
 end

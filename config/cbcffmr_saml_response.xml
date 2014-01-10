@@ -94,6 +94,9 @@
       <saml:Attribute Name="UserType" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="UserType">
         <saml:AttributeValue>REPLACE_FFM_USERTYPE</saml:AttributeValue>
       </saml:Attribute>
+      <saml:Attribute Name="IssuerShoppingCartID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" FriendlyName="IssuerShoppingCartID">
+        <saml:AttributeValue>REPLACE_FFM_ISSUER_SHOPPING_CART_ID</saml:AttributeValue>
+      </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="LogoutURL">
         <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           http://log.out.locahost
