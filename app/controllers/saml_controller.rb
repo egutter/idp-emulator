@@ -36,7 +36,7 @@ class SamlController < ApplicationController
       "account_credential_employee_id" => "b",
       "account_credential_ffm_lastname" => "Wolfe",
       "account_credential_ffm_consumerid" => "",
-      "account_credential_ffm_partner_consumerid" => "4485",
+      "account_credential_ffm_partner_consumerid" => "4484",
       "account_credential_ffm_firstname" => "Steve",
       "account_credential_ffm_partner_token" => "101",
       "account_credential_ffm_usertype" => "Consumer",
