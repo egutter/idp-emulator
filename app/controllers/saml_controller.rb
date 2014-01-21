@@ -128,8 +128,8 @@ class SamlController < ApplicationController
     },
     "AIC (ancilliary/life)" => {
       "client" => "aic",
-      "account_credential_employer_id" => "AIC_ANC13",
-      "account_credential_employee_id" => "9220431",
+      "account_credential_employer_id" => "AIC_Dev",
+      "account_credential_employee_id" => "7961",
       "saml_type" => "brix",
     },
     "AultCare" => {
