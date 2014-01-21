@@ -87,6 +87,14 @@
         <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_FIRSTNAME
         </saml:AttributeValue>
       </saml:Attribute>
+      <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="MiddleName">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Jay
+        </saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="SuffixName">
+        <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Sr.
+        </saml:AttributeValue>
+      </saml:Attribute>
       <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PartnerLoggingToken">
         <saml:AttributeValue xsi:type="xs:string" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">REPLACE_FFM_PARTNER_TOKEN
         </saml:AttributeValue>
